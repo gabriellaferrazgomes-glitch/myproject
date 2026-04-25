@@ -2,20 +2,26 @@ import pandas as pd
 import plotly.express as px
 import streamlit as st
 
-car_data = pd.read_csv('vehicles.csv')
+# carregar dados
+car_data = pd.read_csv('vehicles_us.csv')
 
 st.header('Análise de veículos')
 
-hist_button = st.button('Criar histograma')
-
-if hist_button:
-    st.write('Criando um histograma para o conjunto de dados')
+st.subheader('Histograma de quilometragem')
+if st.button('Criar histograma'):
     fig = px.histogram(car_data, x='odometer')
     st.plotly_chart(fig, use_container_width=True)
 
-scatter_button = st.button('Criando um gráfico de dispersão')
-
-if scatter_button:
-    st.write('Criando um gráfico de dispersão')
+st.subheader('Relação entre preço e quilometragem')
+if st.button('Criar gráfico de dispersão'):
     fig = px.scatter(car_data, x='odometer', y='price')
     st.plotly_chart(fig, use_container_width=True)
+
+# filtro interativo
+st.subheader('Filtro por preço')
+max_price = st.slider('Preço máximo', 0, 100000, 50000)
+
+filtered_data = car_data[car_data['price'] <= max_price]
+
+fig = px.scatter(filtered_data, x='odometer', y='price')
+st.plotly_chart(fig, use_container_width=True)
