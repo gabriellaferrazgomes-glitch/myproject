@@ -11,3 +11,6 @@ Este projeto é um aplicativo web desenvolvido com Streamlit.
 - Pandas
 - Plotly
 - Streamlit
+
+## Aplicação online
+https://myproject-1-8thg.onrender.com
