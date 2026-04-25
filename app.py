@@ -14,6 +14,6 @@ if hist_button:
     st.plotly_chart(fig, use_container_width=True)
 
 
-car_data = pd.read_csv('../vehicles.csv') # lendo os dados
+car_data = pd.read_csv('/vehicles.csv') # lendo os dados
 fig = px.scatter(car_data, x="odometer", y="price") # criar um gráfico de dispersão
 fig.show() # exibindo
